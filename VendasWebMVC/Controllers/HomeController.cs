@@ -18,6 +18,13 @@ namespace VendasWebMVC.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            ViewData["Message"] = "Aqui falaremos um pouco sobre nós.";
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
