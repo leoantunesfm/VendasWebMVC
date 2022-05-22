@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using VendasWebMVC.Models;
+using VendasWebMVC.Models.ViewModels;
 
 namespace VendasWebMVC.Controllers
 {
