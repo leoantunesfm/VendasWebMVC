@@ -17,5 +17,8 @@ namespace VendasWebMVC.Data
         public DbSet<Departamento>? Departamento { get; set; }
         public DbSet<Vendedor> Vendedor { get; set; }
         public DbSet<DocumentoVenda> DocumentoVenda { get; set; }
+        public DbSet<DocumentoVendaItem> DocumentoVendaItem { get; set; }
+        public DbSet<Produto> Produto { get; set; }
+        public DbSet<CategoriaProduto> CategoriaProduto { get; set; }
     }
 }

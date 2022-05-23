@@ -7,9 +7,10 @@ namespace VendasWebMVC.Models
         public int Id { get; set; }
         public int NumeroDocumento { get; set; }
         public DateTime DataEmissao { get; set; }
-        public double ValorTotal { get; set; }
+        public double ValorTotal { get; private set; }
         public StatusVenda Status { get; set; }
         public Vendedor Vendedor { get; set; }
+        public List<DocumentoVendaItem> Itens { get; set; } = new List<DocumentoVendaItem>();
 
         public DocumentoVenda() { }
 
@@ -18,9 +19,22 @@ namespace VendasWebMVC.Models
             Id = id;
             NumeroDocumento = numeroDocumento;
             DataEmissao = dataEmissao;
-            ValorTotal = valorTotal;
             Status = status;
             Vendedor = vendedor;
+        }
+
+        public void AdicionarItens(DocumentoVendaItem item)
+        {
+            Itens.Add(item);
+        }
+
+        public void RemoverItens(DocumentoVendaItem item)
+        {
+            Itens.Remove(item);
+        }
+        public void ProcessaVenda()
+        {
+            ValorTotal = Itens.Sum(item => item.SubTotal());
         }
     }
 }
