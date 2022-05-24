@@ -14,8 +14,7 @@ namespace VendasWebMVC.Controllers
 
         public IActionResult Index()
         {
-            var list = _vendedorService.ListarTodos();
-            return View(list);
+            return View(_vendedorService.ListarTodos());
         }
     }
 }
