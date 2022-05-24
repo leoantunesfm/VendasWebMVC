@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VendasWebMVC.Data;
 
@@ -11,9 +12,10 @@ using VendasWebMVC.Data;
 namespace VendasWebMVC.Migrations
 {
     [DbContext(typeof(VendasWebMVCContext))]
-    partial class VendasWebMVCContextModelSnapshot : ModelSnapshot
+    [Migration("20220524115417_AjusteCampoTabelaVendedor")]
+    partial class AjusteCampoTabelaVendedor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

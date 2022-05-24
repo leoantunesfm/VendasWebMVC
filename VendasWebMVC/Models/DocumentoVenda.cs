@@ -10,7 +10,7 @@ namespace VendasWebMVC.Models
         public double ValorTotal { get; private set; }
         public StatusVenda Status { get; set; }
         public Vendedor Vendedor { get; set; }
-        public List<DocumentoVendaItem> Itens { get; set; } = new List<DocumentoVendaItem>();
+        public ICollection<DocumentoVendaItem> Itens { get; set; } = new List<DocumentoVendaItem>();
 
         public DocumentoVenda() { }
 
@@ -32,7 +32,7 @@ namespace VendasWebMVC.Models
         {
             Itens.Remove(item);
         }
-        public void ProcessaVenda()
+        public void ProcessarVenda()
         {
             ValorTotal = Itens.Sum(item => item.SubTotal());
         }

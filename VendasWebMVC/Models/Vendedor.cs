@@ -7,7 +7,7 @@ namespace VendasWebMVC.Models
     {
         public int Id { get; set; }
         public string Codigo { get; set; }
-        public string Name { get; set; }
+        public string Nome { get; set; }
         public string Email { get; set; }
         public DateTime DataNascimento { get; set; }
         public double SalarioBase { get; set; }
@@ -16,11 +16,11 @@ namespace VendasWebMVC.Models
 
         public Vendedor() { }
 
-        public Vendedor(int id, string codigo, string name, string email, DateTime dataNascimento, double salarioBase, Departamento departamento)
+        public Vendedor(int id, string codigo, string nome, string email, DateTime dataNascimento, double salarioBase, Departamento departamento)
         {
             Id = id;
             Codigo = codigo;
-            Name = name;
+            Nome = Nome;
             Email = email;
             DataNascimento = dataNascimento;
             SalarioBase = salarioBase;

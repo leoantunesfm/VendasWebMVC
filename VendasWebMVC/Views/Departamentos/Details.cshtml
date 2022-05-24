@@ -1,10 +1,10 @@
 ﻿@model VendasWebMVC.Models.Departamento
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h1>Details</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div>
     <h4>Departamento</h4>
@@ -24,7 +24,47 @@
         </dd>
     </dl>
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
+</div>
+
+<div>
+    <p>
+         <h5>Vendedores vinculados</h5>
+    </p>
+
+    <table class="table table-striped table-hover">
+    <thead>
+        <tr class="table-secondary">
+            <th>
+                @Html.DisplayName("Código")
+            </th>
+            <th>
+                @Html.DisplayName("Nome")
+            </th>
+            <th>
+                @Html.DisplayName("E-mail")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vendedor in Model.Vendedores)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(vendedor => vendedor.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(vendedor => vendedor.Nome)
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
 </div>
