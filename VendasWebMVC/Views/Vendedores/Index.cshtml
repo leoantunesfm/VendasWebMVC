@@ -17,7 +17,7 @@
                 @Html.DisplayName("Código")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayName("Nome")
             </th>
             <th>
                 @Html.DisplayName("E-mail")
@@ -55,7 +55,7 @@
                     @Html.DisplayFor(modelItem => item.SalarioBase)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Departamento.Nome)
+                    @Html.DisplayFor(modelItem => item.DepartamentoId)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Alterar</a> |
