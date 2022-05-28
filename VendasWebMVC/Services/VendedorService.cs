@@ -23,5 +23,17 @@ namespace VendasWebMVC.Services
             _context.SaveChanges();
         }
 
+        public Vendedor BuscaPorId(int id)
+        {
+            return _context.Vendedor.FirstOrDefault(v => v.Id == id);
+        }
+
+        public void Excluir(int id)
+        {
+            var obj = _context.Vendedor.Find(id);
+            _context.Vendedor.Remove(obj);
+            _context.SaveChanges();
+        }
+
     }
 }
