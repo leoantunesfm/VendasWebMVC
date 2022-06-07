@@ -36,6 +36,7 @@ namespace VendasWebMVC.Controllers
             }
 
             var departamento = await _context.Departamento
+                .Include(obj => obj.Vendedores)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (departamento == null)
             {
