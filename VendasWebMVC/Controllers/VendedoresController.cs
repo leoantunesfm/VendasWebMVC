@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using VendasWebMVC.Models;
 using VendasWebMVC.Models.ViewModels;
 using VendasWebMVC.Services;
@@ -41,14 +42,14 @@ namespace VendasWebMVC.Controllers
         {
             if(id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "O Id não foi fornecido." });
             }
 
             var obj = _vendedorService.BuscaPorId(id.Value);
 
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id do vendedor não encontrado." });
             }
 
             return View(obj);
@@ -66,14 +67,14 @@ namespace VendasWebMVC.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "O Id não foi fornecido." });
             }
 
             var obj = _vendedorService.BuscaPorId(id.Value);
 
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id do vendedor não encontrado." });
             }
 
             return View(obj);
@@ -83,13 +84,13 @@ namespace VendasWebMVC.Controllers
         {
             if(id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "O Id não foi fornecido." });
             }
 
             var obj = _vendedorService.BuscaPorId(id.Value);
             if(obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id do vendedor não encontrado." });
             }
 
             List<Departamento> departamentos = _departamentoService.ListarTodos();
@@ -104,21 +105,28 @@ namespace VendasWebMVC.Controllers
         {
             if(id != vendedor.Id)
             {
-                return BadRequest();
+                return RedirectToAction(nameof(Error), new { message = "O Id informado não corresponde." });
             }
             try
             {
                 _vendedorService.Update(vendedor);
                 return RedirectToAction(nameof(Index));
             }
-            catch(NotFoundException)
+            catch(ApplicationException ex)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = ex.Message });
             }
-            catch (DbConcurrencyException)
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
             {
-                return BadRequest();
-            }
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+
+            return View(viewModel);
         }
     }
 }
