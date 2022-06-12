@@ -17,7 +17,7 @@ namespace VendasWebMVC.Models
         [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
         [Display(Name = "Salário")]
-        [DisplayFormat(DataFormatString ="{0:F2}")]
+        [DisplayFormat(DataFormatString ="{0:C}")]
         public double SalarioBase { get; set; }
         public Departamento Departamento { get; set; }
         public int DepartamentoId { get; set; }
