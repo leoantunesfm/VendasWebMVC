@@ -45,7 +45,7 @@ namespace VendasWebMVC.Models
         {
             Id = id;
             Codigo = codigo;
-            Nome = Nome;
+            Nome = nome;
             Email = email;
             DataNascimento = dataNascimento;
             SalarioBase = salarioBase;
