@@ -16,7 +16,7 @@ namespace VendasWebMVC.Services
 
         public async Task<List<Departamento>> ListarTodosAsync()
         {
-            return await _context.Departamento.OrderBy(d => d.Nome).ToListAsync();
+            return await _context.Departamento.OrderBy(d => d.Codigo).ToListAsync();
         }
     }
 }

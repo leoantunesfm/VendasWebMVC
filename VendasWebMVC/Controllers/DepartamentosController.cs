@@ -7,24 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VendasWebMVC.Data;
 using VendasWebMVC.Models;
+using VendasWebMVC.Services;
 
 namespace VendasWebMVC.Controllers
 {
     public class DepartamentosController : Controller
     {
         private readonly VendasWebMVCContext _context;
+        private readonly DepartamentoService _departamentoService;
 
-        public DepartamentosController(VendasWebMVCContext context)
+        public DepartamentosController(VendasWebMVCContext context, DepartamentoService departamentoService)
         {
             _context = context;
+            _departamentoService = departamentoService;
         }
 
         // GET: Departamentos
         public async Task<IActionResult> Index()
         {
-              return _context.Departamento != null ? 
-                          View(await _context.Departamento.ToListAsync()) :
-                          Problem("Entity set 'VendasWebMVCContext.Departamento'  is null.");
+              return View(await _departamentoService.ListarTodosAsync());
         }
 
         // GET: Departamentos/Details/5
