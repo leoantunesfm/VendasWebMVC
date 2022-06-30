@@ -15,6 +15,7 @@ builder.Services.AddDbContext<VendasWebMVCContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<VendedorService>();
 builder.Services.AddScoped<DepartamentoService>();
+builder.Services.AddScoped<CategoriaProdutoService>();
 
 var app = builder.Build();
 
